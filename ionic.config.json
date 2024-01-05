@@ -1,0 +1,7 @@
+{
+  "name": "occasiodrive",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
