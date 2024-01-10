@@ -2,6 +2,11 @@
 
 # dependencies
 /node_modules
+/cypress
+/dist
+/android
+/ios
+
 /.pnp
 .pnp.js
 
