@@ -36,25 +36,23 @@ import ListAnnonces from "../components/annonces/ListAnnonces";
 function Home() {
   return (
     <>
-      <IonMenu contentId="main-content">
+      <IonMenu side="end" contentId="main-content">
         <IonHeader>
-          <IonToolbar>
-            <IonTitle>Menu Content</IonTitle>
-          </IonToolbar>
+          <IonToolbar>Menu</IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding"></IonContent>
       </IonMenu>
       <IonPage id="main-content" color="light">
         <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton></IonMenuButton>
+          <IonToolbar style={{ backgroundColor: "#0d4f78" }}>
+            <IonButtons slot="end">
+              <IonMenuButton color={"dark"}></IonMenuButton>
             </IonButtons>
-            <IonTitle>Menu</IonTitle>
+            <span>OcassioDrive</span>
           </IonToolbar>
         </IonHeader>
-        <IonContent color={"light"} >
-          <ListAnnonces/>
+        <IonContent >
+          <ListAnnonces />
           <IonFab slot="fixed" vertical="bottom" horizontal="end">
             <IonFabButton>
               <IonIcon icon={chevronUpCircle}></IonIcon>
