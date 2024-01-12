@@ -27,7 +27,7 @@ axios.post("http://localhost:7070/api/v1/announces",jsonBody,{jsonHeaders})
     .then(response=>{
         if(response.status===201){
             const uploadPayload = {
-                "file":
+                "file":""
             }
 
             axios.post("http://localhost:7070/api/v1/announces/upload",uploadPayload,{headers})

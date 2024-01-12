@@ -65,7 +65,7 @@ const Home: React.FC = () => {
           setError(error.response.data.error);
           setTimeout(()=>{
             setError(null)
-          },2000)
+          },20000)
         }
       }).finally(()=>{
          setIsLoading(false);

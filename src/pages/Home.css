@@ -37,3 +37,15 @@ ion-label strong {
 ion-label ion-note {
   font-size: 0.9rem;
 }
+
+.logo{
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  color: #0d4f78;
+}
+
+.logo span{
+  color: #e87524;
+}
+

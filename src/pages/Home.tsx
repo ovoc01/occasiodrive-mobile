@@ -16,7 +16,7 @@ import {
   IonNote,
   IonFabButton,
   IonFab,
-  IonFabList
+  IonFabList,
 } from "@ionic/react";
 
 import {
@@ -36,24 +36,15 @@ import ListAnnonces from "../components/annonces/ListAnnonces";
 function Home() {
   return (
     <>
-      <IonMenu side="end" contentId="main-content">
-        <IonHeader>
-          <IonToolbar>Menu</IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding"></IonContent>
-      </IonMenu>
       <IonPage id="main-content" color="light">
         <IonHeader>
-          <IonToolbar style={{ backgroundColor: "#0d4f78" }}>
-            <IonButtons slot="end">
-              <IonMenuButton color={"dark"}></IonMenuButton>
-            </IonButtons>
-            <span>OcassioDrive</span>
+          <IonToolbar >
+            <span className={"logo"}>Ocassio<span>Drive</span> </span>
           </IonToolbar>
         </IonHeader>
-        <IonContent >
+        <IonContent>
           <ListAnnonces />
-          <IonFab slot="fixed" vertical="bottom" horizontal="end">
+          <IonFab  slot="fixed" vertical="bottom" horizontal="end">
             <IonFabButton>
               <IonIcon icon={chevronUpCircle}></IonIcon>
             </IonFabButton>
@@ -73,7 +64,5 @@ function Home() {
       </IonPage>
     </>
   );
-  
-  
 }
 export default Home;

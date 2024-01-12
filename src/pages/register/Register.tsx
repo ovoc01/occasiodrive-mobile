@@ -23,7 +23,7 @@ const Home: React.FC = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [name, setName] = useState(null);
-  const [date, setDate] = useState(null);
+  const [dateNaissance, setDate] = useState(null);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -47,9 +47,9 @@ const Home: React.FC = () => {
     }
   };
 
-  const handleDateChange = (event: CustomEvent) => {
+  const handleDateChange = (event: any) => {
     // Update the state when the date changes
-    setDate(event.detail.value || "");
+    setDate(event.detail.value);
   };
 
   const doRefresh = (event: CustomEvent) => {
@@ -68,20 +68,25 @@ const Home: React.FC = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    const loginCredential = {
+
+    const registerCredential = {
       email: email,
       password: password,
-      name: name,
-      date: date,
+      fullName: name,
+      birthDate: dateNaissance,
+      gender:1
     };
+
+    console.log(registerCredential)
     const headers = {
       "Content-Type": "application/json",
     };
 
     axios
-      .post(base_url + "/api/v1/auth/register", loginCredential, { headers })
+      .post(base_url + "/api/v1/auth/register", registerCredential, { headers })
       .then((response) => {
         if (response.status === 201) {
+
           setMessage(response.data.message);
           setShow(true);
           //history.push("/login")
@@ -93,7 +98,7 @@ const Home: React.FC = () => {
           setError(error.response.data.error);
           setTimeout(() => {
             setError(null);
-          }, 5000);
+          }, 50000);
         }
       })
       .finally(() => {
@@ -137,7 +142,7 @@ const Home: React.FC = () => {
               <IonDatetimeButton  datetime="datetime"></IonDatetimeButton>
 
               <IonModal  keepContentsMounted={true}>
-                <IonDatetime  presentation="date" id="datetime"></IonDatetime>
+                <IonDatetime  onIonChange={handleDateChange} presentation="date" id="datetime"></IonDatetime>
               </IonModal>
             </div>
 
@@ -155,7 +160,7 @@ const Home: React.FC = () => {
             {message && <h2 className="message">{message}</h2>}
             {!show && (
               <>
-                <button className="btn" disabled={isLoading}>
+                <button  className="btn" disabled={isLoading}>
                   {isLoading ? "Veuillez patientez..." : "S'inscrire"}
                 </button>
                 ou
