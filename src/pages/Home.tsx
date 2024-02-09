@@ -1,68 +1,81 @@
 import React from "react";
 import {
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonMenu,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
-  IonToolbar,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
   IonIcon,
-  IonList,
   IonLabel,
-  IonText,
-  IonItem,
-  IonNote,
-  IonFabButton,
+  IonRouterOutlet,
+  IonContent,
+  IonPage,
+  IonHeader,
+  IonToolbar,
   IonFab,
+  IonFabButton,
   IonFabList,
 } from "@ionic/react";
 
+import { Redirect, Route } from "react-router-dom";
 import {
-  chevronDownCircle,
-  chevronForwardCircle,
-  chevronUpCircle,
-  colorPalette,
-  document,
-  globe,
+  addCircleOutline,
+  homeOutline,
+  notificationsOutline,
+  exitOutline,
 } from "ionicons/icons";
 
-import { chevronForward, listCircle } from "ionicons/icons";
+import { useLocation } from 'react-router-dom';
 
 import "./Home.css";
 import ListAnnonces from "../components/annonces/ListAnnonces";
 
+import { IonReactRouter } from "@ionic/react-router";
+import Details from "../components/annonces/Details";
+import NewAnnonces from "./annonces/NewAnnonces";
+import Footer from "../partial/Footer";
+
 function Home() {
+  const location = useLocation(); // Get the current location object
+
+
   return (
-    <>
-      <IonPage id="main-content" color="light">
-        <IonHeader>
-          <IonToolbar >
-            <span className={"logo"}>Ocassio<span>Drive</span> </span>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <ListAnnonces />
-          <IonFab  slot="fixed" vertical="bottom" horizontal="end">
-            <IonFabButton>
-              <IonIcon icon={chevronUpCircle}></IonIcon>
-            </IonFabButton>
-            <IonFabList side="top">
-              <IonFabButton>
-                <IonIcon icon={document}></IonIcon>
-              </IonFabButton>
-              <IonFabButton>
-                <IonIcon icon={colorPalette}></IonIcon>
-              </IonFabButton>
-              <IonFabButton>
-                <IonIcon icon={globe}></IonIcon>
-              </IonFabButton>
-            </IonFabList>
-          </IonFab>
-        </IonContent>
-      </IonPage>
-    </>
+   
+      <IonTabs>
+
+        <IonRouterOutlet>
+          <Route exact={true} path="/home/announces" component={ListAnnonces} />
+
+          <Route exact={true} path={"/home/details/:idAnnounce"} component={Details} />
+
+          <Route exact={true} path={"/home/add"} component={NewAnnonces} />
+
+        </IonRouterOutlet>
+
+
+
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="home" href="/home/announces">
+            <IonIcon icon={homeOutline} />
+            <IonLabel>Listes annonces</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="add" href="/home/add">
+            <IonIcon icon={addCircleOutline} />
+            <IonLabel>Ajouter annonces</IonLabel>
+          </IonTabButton>
+
+          
+
+
+          <IonTabButton tab="search" href="/search">
+            <IonIcon icon={exitOutline} />
+            <IonLabel>Log out</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+
+      </IonTabs>
+
+   
   );
 }
+
 export default Home;

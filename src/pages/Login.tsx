@@ -1,28 +1,26 @@
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonLoading,
-  IonButton
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
+
 import "./Login.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import { base_url } from "../settings/global";
 
 import {useHistory} from "react-router"
-import { Toaster,toast } from "sonner";
 
 const Home: React.FC = () => {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("admin");
   const[error,setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
-
+  
+  
+ 
+    
   const handleInputChange = (event: any) => {
     if (event.target.name === "email") {
       setEmail(event.target.value);
@@ -31,6 +29,8 @@ const Home: React.FC = () => {
     }
   };
   
+ 
+
 
    const mooveToRegister = (event:any) => {
       event.preventDefault()
@@ -39,6 +39,7 @@ const Home: React.FC = () => {
   //Submit form
   const handleSubmit = (event: any) => {
     event.preventDefault();
+   
    setIsLoading(true);
     const loginCredential = {
       email: email,
@@ -48,7 +49,7 @@ const Home: React.FC = () => {
       "Content-Type": "application/json",
     };
 
-   
+
 
     axios
       .post(base_url + "/api/v1/auth/login", loginCredential, { headers })
@@ -56,7 +57,7 @@ const Home: React.FC = () => {
         if (response.status === 200) {
           const token: string = response.data.token;
           localStorage.setItem("token", token);
-          history.push('/home')
+          history.push('/home/announces')
         }
       })
       .catch((error) => {
@@ -75,7 +76,7 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <Toaster />
+        
         <div className="container">
           <h3 className="description">Connectez vous à votre compte</h3>
           <form onChange={handleInputChange} onSubmit={handleSubmit}>
@@ -87,6 +88,7 @@ const Home: React.FC = () => {
                 type="email"
                 id="email"
                 required={true}
+                value={email}
               />
             </div>
 
@@ -98,6 +100,7 @@ const Home: React.FC = () => {
                 type="password"
                 id="password"
                 required={true}
+                value={password}
               />
               
             </div>

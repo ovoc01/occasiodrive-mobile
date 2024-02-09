@@ -21,13 +21,14 @@ import { useHistory } from "react-router";
 
 const Home: React.FC = () => {
   const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [password, setPassword] = useState('');
   const [name, setName] = useState(null);
   const [dateNaissance, setDate] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const history = useHistory();
 
@@ -62,6 +63,14 @@ const Home: React.FC = () => {
       event.detail.complete();
     }, 1000);
   };
+
+
+  const handleShowPassword = (event: any) => {
+    console.log(event.target.checked)
+    if (event.target.name === "show-password") {
+      setShowPassword(!showPassword);
+    }
+  }
 
   //Submit form
   const handleSubmit = (event: any) => {
@@ -99,6 +108,8 @@ const Home: React.FC = () => {
           setTimeout(() => {
             setError(null);
           }, 50000);
+        }else{
+          setError("Une erreur est survenue, veuillez réessayer plus tard");
         }
       })
       .finally(() => {
@@ -124,6 +135,7 @@ const Home: React.FC = () => {
                 name="name"
                 type="text"
                 id="name"
+                
                 required
               />
             </div>
@@ -148,13 +160,19 @@ const Home: React.FC = () => {
 
             <div className="form-group">
               <label htmlFor="password">Mot de passe:</label>
+              
               <input
                 className="input"
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
+                value={password}
                 required
               />
+            </div>
+            <div className="form-group">
+            <label htmlFor="show-password">Affichez mot de passe:</label>
+              <input  id="show-password" name="show-password" type="checkbox" className="show-password" onClick={handleShowPassword}/>
             </div>
             {error && <h2 className="error">{error}</h2>}
             {message && <h2 className="message">{message}</h2>}

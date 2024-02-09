@@ -1,40 +1,37 @@
-.item{
+.item {
     width: 100%;
     height: 200px;
-    
+
     display: flex;
     flex-direction: column;
     gap: 20px;
     border-bottom: solid 1px #0d4f78;
 }
 
-.item  .car-name{
+.item .car-name {
     color: #0d4f78;
     font-size: 15px;
     font-weight: 700;
 }
 
-
-
-.item-header{
+.item-header {
     height: 10%;
-    
+
     margin-top: 10px;
     display: flex;
     gap: 5px;
     justify-content: space-around;
     align-items: center;
 }
-.item-header .status{
-     font-size: 13px;
+.item-header .status {
+    font-size: 13px;
 }
 
-.item-header .status-color{
-   color: green;
-   font-weight: 800;
+.item-header .status-color {
+    font-weight: 800;
 }
 
-.item-content{
+.item-content {
     margin-left: 20px;
     display: flex;
     width: 100%;
@@ -43,19 +40,42 @@
     gap: 10px;
 }
 
-.item-content .img{
+.item-content .img {
     width: 50%;
     height: 100%;
     background-color: aliceblue;
 }
 
-.item-content .extra-info{
+.item-content img{
+    /* object-fit: contain; */
+    height: 100%;
+    width: 100%;
+    
+}
+
+.item-content .extra-info {
     font-size: 13px;
     color: #8f8f8f;
     font-weight: 600;
-     width: 40%;
+    width: 40%;
     height: 100%;
-   display: flex;
-   flex-direction: column;
-   gap: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.delete {
+    color: rgb(216, 36, 36);
+}
+
+.pending {
+    color: #e87524;
+}
+
+.validate {
+    color: #30749e;
+}
+
+.sell {
+    color: green;
 }

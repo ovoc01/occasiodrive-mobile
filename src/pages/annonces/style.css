@@ -1,12 +1,15 @@
-.container {
+
+
+.big-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     row-gap: 20px;
-    height: 100vh;
+    height: fit-content;
     width: 100%;
     font-family: "Open Sans", sans-serif;
+    overflow-y: scroll;
 }
 
 .description {
@@ -110,3 +113,24 @@ ion-checkbox::part(container) {
     justify-content: center;
     align-items: center;
 }
+
+
+.info{
+    font-weight: normal;
+    width: 310px;
+    height: fit-content;
+    font-size: 12px;
+    text-align: start;
+    text-overflow: ellipsis;
+}
+
+.success{
+    background-color: rgb(214, 240, 214);
+    color: green;
+}
+
+.warning{
+    background-color: rgb(255, 255, 204);
+    color: rgb(255, 153, 0);
+}
+

@@ -10,7 +10,13 @@ import {
   IonLabel,
 } from "@ionic/react";
 
-import { playCircle, radio, library, search,addCircleOutline } from "ionicons/icons";
+import {
+  playCircle,
+  radio,
+  library,
+  search,
+  addCircleOutline,
+} from "ionicons/icons";
 
 import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
@@ -34,39 +40,47 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import { Toaster } from "sonner";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Details from "./components/annonces/Details";
 import NewAnnonces from "./pages/annonces/NewAnnonces";
+
+
 setupIonicReact();
 
 const App: React.FC = () => {
   const token = localStorage.getItem("token");
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log("Ato alouha");
+    // history.push("/home/announces")
+  });
 
   return (
     <IonApp>
       <IonReactRouter>
-        <Toaster className="My Toast" />
+        <IonRouterOutlet>
+          <Route exact path="/home/announces">
+            <Home />
+          </Route>
+          <Route exact={true} path={"/home/details/:idAnnounce"}  >
+            <Details />
+          </Route>
+          <Route exact={true} path={"/home/add"} >
+            <NewAnnonces />
+          </Route>
 
-          <IonRouterOutlet>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/login" />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path={"/announces/:id"}>
-                <Details/>
-            </Route>
-            <Route exact path={"/announces/add"}>
-                <NewAnnonces/>
-            </Route>
-          </IonRouterOutlet>
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+        </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
   );

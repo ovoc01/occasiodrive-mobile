@@ -1,19 +1,27 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { base_url } from '../../settings/global';
+/* import carData from './data.json'; */
+import {
+    IonContent,
+    IonRefresher,
+    IonRefresherContent,
+    IonSelect,
+    IonSelectOption,
+    IonLoading,
+    IonHeader,
+    IonToolbar,
+    IonTitle
+} from "@ionic/react";
 
-import "./style.css";
-import React, { useEffect, useState } from "react";
-import Annonce from "./DetailsAnnonce";
-import CarDetail from "./DetailCar";
-import { IonContent, IonHeader, IonLoading, IonRefresher, IonRefresherContent, IonRouterOutlet, IonSelect, IonSelectOption } from "@ionic/react";
-import { Route, useHistory } from "react-router";
-import axios from "axios";
-import { base_url } from "../../settings/global";
+interface ItemProps {
+    setCarDetailInfo:any
+    annonceInfo:any
+  }
+  
 
+const  CarDetail:React.FC<ItemProps> = () => {
 
-
-
-function NewAnnonce() {
-
-    //Data 
     const [selectedBrand, setSelectedBrand] = useState('');
     const [selectedModel, setSelectedModel] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -23,37 +31,13 @@ function NewAnnonce() {
     const [selectedCarburant, setSelectedCarburant] = useState('')
     const [isLoading, setIsLoading] = useState(false);
     const [carData, setCarData] = useState([])
-    const[mileAge,setMileAge] = useState();
-    const [disabled,setDisabled] = useState(false)
 
-
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [name, setName] = useState(null);
-    const [dateNaissance, setDate] = useState(null);
-    const [error, setError] = useState(null);
-    const [message, setMessage] = useState(null);
-
-    const [show, setShow] = useState(false);
-    const [filesBase64, setFilesBase64] = useState<string[]>([]);
-    const [sellingPrice, setSellingPrice] = useState()
-    const [description, setDescription] = useState()
-    const history = useHistory();
-
-    const resetInput = ()=>{
-        setSelectedBrand('')
-        
-    }
-
-
-
+    
     const token = localStorage.getItem('token');
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
     }
-
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -83,6 +67,10 @@ function NewAnnonce() {
         loadData();
     }, []);
 
+
+    
+
+
     const doRefresh = () => {
         const fetchData = async () => {
             try {
@@ -106,8 +94,6 @@ function NewAnnonce() {
 
         loadData();
     }
-
-
 
 
 
@@ -153,167 +139,42 @@ function NewAnnonce() {
         setSelectedCarburant(event.detail.value);
     }
 
-    const handleSubimt = (e: any) => {
+    const handleSubimt = (e:any) =>{
         e.preventDefault()
         const data = {
-            brand: selectedBrand,
-            model: selectedModel,
-            fuelType: selectedCarburant,
-            motorisation: selectedMotorisations,
-            transmission: selectedTransmission,
-            version: selectedVersion,
-            category: selectedCategory
+            brand:selectedBrand,
+            model:selectedModel,
+            fuelType:selectedCarburant,
+            motorisation:selectedMotorisations,
+            transmission:selectedTransmission,
+            version:selectedVersion,
+            category:selectedCategory
         }
 
-
-        resetInput()
+       
     }
 
-    const handleFileChange = (event: any) => {
-        const uploadedFiles = event.target.files;
 
-        for (let i = 0; i < uploadedFiles.length; i++) {
-            const reader = new FileReader();
+    return (
+        <>
+            <IonHeader>
+                    <button>Retour</button>
+            </IonHeader>
+            <IonContent fullscreen>
+                <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+                    <IonRefresherContent />
+                </IonRefresher>
+                {isLoading && (
+                    <IonLoading isOpen={true} message="Veuillez patientez...">
 
-            reader.onloadend = () => {
-                setFilesBase64(prevState => [...prevState, reader.result?.toString() || '']);
-            };
-
-            reader.readAsDataURL(uploadedFiles[i]);
-        }
-        filesBase64.forEach(async (base64String) => {
-
-            console.log(base64String)
-        });
-
-    }
-
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
-
-
-        const data = {
-            description:description,
-            sellingPrice:sellingPrice,
-            idModel:selectedModel,
-            idCategory:selectedCategory,
-            idMotorisation:selectedMotorisations,
-            idVersion:selectedVersion,
-            idBrand:selectedBrand,
-            idTransmission:selectedTransmission,
-            idFuelType:selectedCarburant,
-            registration:"20349 TAB",
-            mileAge:mileAge,
-            photos:filesBase64
-        }
-
-        
-        axios.
-        post(base_url + "/api/v1/announces", data, { headers })
-        .then((response)=>{
-            setMessage(response.data.message)
-        })
-        .catch((error)=>{
-            if (error.response) {
-                console.error("Error occurs ", error.response.data.error);
-                setError(error.response.data.error);
-                setTimeout(()=>{
-                  setError(null)
-                },20000)
-              }
-        })
-
-        console.log(data)
-
-
-    };
-
-    
-
-    const handleInputChange = (event: any) => {
-        if (event.target.name === "email") {
-            setEmail(event.target.value);
-        } else if (event.target.name === "password") {
-            setPassword(event.target.value);
-        } else if (event.target.name === "name") {
-            setName(event.target.value);
-        } else if (event.target.name === "date") {
-            setDate(event.target.value);
-        } else if (event.target.name === "prix") {
-            setSellingPrice(event.target.value)
-        } else if (event.target.name === "description") {
-            setDescription(event.target.value)
-        }else if(event.target.name==="mileAge"){
-            setMileAge(event.target.value)
-            setDisabled(true)
-        }
-        
-    };
-
-
-    return <>
-        <IonHeader>
-
-        </IonHeader>
-        <IonContent  className="ion-padding">
-            <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
-                <IonRefresherContent />
-            </IonRefresher>
-            {isLoading && (
-                <IonLoading isOpen={true} message="Veuillez patientez...">
-
-                </IonLoading>
-            )}
-           
-                <div className="big-container">
+                    </IonLoading>
+                )}
+                <div className="container">
                     <h3 className="description">
-                        Donner les descriptions de votre annonces
+                        Donner les details de votre voitures
+
                     </h3>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email">Prix de vente:</label>
-                            <input
-                                className="input"
-                                name="prix"
-                                type="number"
-                                id="email"
-                                required
-                                value={sellingPrice}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="pictures">Photo(s):</label>
-                            <input className="input" type="file" multiple onChange={handleFileChange} />
-                        </div>
-                        <div className="image-uploaded">
-                            {filesBase64.map((fileBase64, index) => (
-                                <img key={index} src={fileBase64} alt="" style={{ width: '90px', height: '90px' }} />
-                            ))}
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="name">Description:</label>
-                            <textarea
-                                className="input"
-                                name="description"
-                                id="name"
-                                required
-                                value={description}
-                                onChange={handleInputChange}
-                                style={{ height: "100px" }}
-                            />
-                        </div>
-
-
-                        
-                    </form>
-
-                
-                
                     
-
                     <form>
                         <div className="form-group">
                             <IonSelect
@@ -448,12 +309,10 @@ function NewAnnonce() {
                                                 <label htmlFor="email">Kilometrage:</label>
                                                 <input
                                                     className="input"
-                                                    name="mileAge"
+                                                    name="prix"
                                                     type="number"
                                                     id="Kilometrage"
                                                     required
-                                                    value={mileAge}
-                                                    onChange={handleInputChange}
                                                 />
                                             </div>
                                         )
@@ -463,20 +322,19 @@ function NewAnnonce() {
                         }
 
                         <div className="form-group">
-                            <button className="btn" style={{ marginBottom: "40px" }} onClick={handleSubmit} disabled={!disabled}>
+                            <button className="btn" style={{marginBottom:"40px"}} onClick={handleSubimt}>
                                 Validez
                             </button>
                         </div>
 
+
+
+
                     </form>
-                
-            </div>
-
-        </IonContent>
-
-
-    </>
-
+                </div>
+            </IonContent>
+        </>
+    );
 }
 
-export default NewAnnonce;
+export default CarDetail;

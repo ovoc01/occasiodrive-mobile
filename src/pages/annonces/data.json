@@ -1,0 +1,366 @@
+[
+   {
+      "id": 1,
+      "marque": "Toyota",
+      "modeles": [
+         {
+            "id": 1,
+            "nom": "Camry",
+            "categories": [
+               {
+                  "id": 1,
+                  "nom": "Berlin",
+                  "motorisations": [
+                     {
+                        "id": 1,
+                        "nom": "B5 4.4 BiTurbo (600 CV)",
+                        "versions": [
+                           {
+                              "id": 1,
+                              "nom": "LE",
+                              "details": "Hybride économique avec caractéristiques de base."
+                           },
+                           {
+                              "id": 2,
+                              "nom": "XLE",
+                              "details": "Hybride haut de gamme avec options avancées."
+                           }
+                        ],
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                        
+                     },
+                     {
+                        "id": 2,
+                        "nom": "B5 4.4 BiTurbo (608 CV)",
+                        "versions": [
+                           {
+                              "id": 3,
+                              "nom": "SE",
+                              "details": "Sedan essence sportif avec intérieur raffiné."
+                           },
+                           {
+                              "id": 4,
+                              "nom": "XSE",
+                              "details": "Sedan essence sportif avec caractéristiques avancées."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "id": 2,
+                  "nom": "SUV",
+                  "motorisations": [
+                     {
+                        "id": 3,
+                        "nom": "Hybride",
+                        "versions": [
+                           {
+                              "id": 5,
+                              "nom": "LE Hybrid",
+                              "details": "SUV Hybride avec options de sécurité avancées."
+                           },
+                           {
+                              "id": 6,
+                              "nom": "Limited Hybrid",
+                              "details": "SUV Hybride haut de gamme avec luxe et performances."
+                           }
+                        ]
+                     },
+                     {
+                        "id": 4,
+                        "nom": "Essence",
+                        "versions": [
+                           {
+                              "id": 7,
+                              "nom": "XLE",
+                              "details": "SUV Essence avec sièges en cuir et options de divertissement."
+                           },
+                           {
+                              "id": 8,
+                              "nom": "Adventure",
+                              "details": "SUV Essence robuste avec capacités tout-terrain."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     }
+                  ]
+               }
+            ]
+         },
+         {
+            "id": 2,
+            "nom": "Corolla",
+            "categories": [
+               {
+                  "id": 3,
+                  "nom": "Compact",
+                  "motorisations": [
+                     {
+                        "id": 5,
+                        "nom": "Essence",
+                        "versions": [
+                           {
+                              "id": 9,
+                              "nom": "L",
+                              "details": "Compact Essence économique avec options de sécurité."
+                           },
+                           {
+                              "id": 10,
+                              "nom": "SE",
+                              "details": "Compact Essence sportif avec intérieur moderne."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     },
+                     {
+                        "id": 6,
+                        "nom": "Hybride",
+                        "versions": [
+                           {
+                              "id": 11,
+                              "nom": "Hybrid LE",
+                              "details": "Compact Hybride avec économie de carburant optimale."
+                           },
+                           {
+                              "id": 12,
+                              "nom": "Hybrid XSE",
+                              "details": "Compact Hybride haut de gamme avec style et performances."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     }
+                  ]
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "id": 2,
+      "marque": "Honda",
+      "modeles": [
+         {
+            "id": 3,
+            "nom": "Accord",
+            "categories": [
+               {
+                  "id": 4,
+                  "nom": "Sedan",
+                  "motorisations": [
+                     {
+                        "id": 7,
+                        "nom": "Hybride",
+                        "versions": [
+                           {
+                              "id": 13,
+                              "nom": "LX",
+                              "details": "Sedan Hybride avec caractéristiques de base."
+                           },
+                           {
+                              "id": 14,
+                              "nom": "Touring",
+                              "details": "Sedan Hybride haut de gamme avec options avancées."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     },
+                     {
+                        "id": 8,
+                        "nom": "Essence",
+                        "versions": [
+                           {
+                              "id": 15,
+                              "nom": "Sport",
+                              "details": "Sedan Essence sportif avec intérieur moderne."
+                           },
+                           {
+                              "id": 16,
+                              "nom": "EX-L",
+                              "details": "Sedan Essence avec caractéristiques avancées."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "id": 5,
+                  "nom": "Coupe",
+                  "motorisations": [
+                     {
+                        "id": 9,
+                        "nom": "Sport",
+                        "versions": [
+                           {
+                              "id": 17,
+                              "nom": "LX-S",
+                              "details": "Coupe Sport avec caractéristiques de base."
+                           },
+                           {
+                              "id": 18,
+                              "nom": "Touring",
+                              "details": "Coupe Sport haut de gamme avec options avancées."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     }
+                  ]
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "id": 3,
+      "marque": "Ford",
+      "modeles": [
+         {
+            "id": 5,
+            "nom": "Fusion",
+            "categories": [
+               {
+                  "id": 6,
+                  "nom": "Sedan",
+                  "motorisations": [
+                     {
+                        "id": 10,
+                        "nom": "Hybride",
+                        "versions": [
+                           {
+                              "id": 19,
+                              "nom": "SE",
+                              "details": "Sedan Hybride avec caractéristiques de base."
+                           },
+                           {
+                              "id": 20,
+                              "nom": "Titanium",
+                              "details": "Sedan Hybride haut de gamme avec options avancées."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     },
+                     {
+                        "id": 11,
+                        "nom": "Essence",
+                        "versions": [
+                           {
+                              "id": 21,
+                              "nom": "S",
+                              "details": "Sedan Essence économique avec caractéristiques de base."
+                           },
+                           {
+                              "id": 22,
+                              "nom": "SEL",
+                              "details": "Sedan Essence avec options avancées."
+                           }
+                        ]
+                        ,
+                        "transmission": [
+                           {
+                              "id": 1,
+                              "nom": "Automatique"
+                           },
+                           {
+                              "id": 2,
+                              "nom": "Manuelle"
+                           }
+                        ]
+                     }
+                  ]
+               }
+            ]
+         }
+      ]
+   }
+]
